@@ -1,0 +1,3 @@
+SUBSYSTEM=="usb", ATTR{idVendor}=="05e3", ATTR{idProduct}=="0608", TAG+="master-of-seat", ENV{ID_AUTOSEAT}="1"
+#TAG=="seat", ENV{ID_FOR_SEAT}=="usb-pci-0000_00_1d_7-usb-0_2", ENV{ID_SEAT}="seat-V"
+#TAG=="seat", ENV{ID_FOR_SEAT}=="usb-pci-0000_00_1d_7-usb-0_4", ENV{ID_SEAT}="seat-L"
