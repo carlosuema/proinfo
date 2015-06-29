@@ -67,7 +67,7 @@ systemctl enable x-daemon@:90.service
 
 progresso "Instalando o ambiente de trabalho LXDE"
 
-do_apt lxde lxtask gtk2-engines gt2-engines-murrine notification-daemon
+do_apt lxde lxtask gtk2-engines gtk2-engines-murrine notification-daemon
 
 progresso "Instalando a infra-estrutura necessária para gerenciamento de sistemas de arquivos"
 
