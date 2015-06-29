@@ -39,7 +39,7 @@ apt-key add etc/apt/sources.list.d/obs-home-lbssousa-multiseat-debian.key
 progresso "Preparando o sistema para a instalação dos novos pacotes"
 
 apt update
-apt upgrade
+apt -y upgrade
 
 progresso "Instalando os pacotes básicos do Xorg"
 
