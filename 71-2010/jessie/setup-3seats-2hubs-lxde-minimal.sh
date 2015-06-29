@@ -24,7 +24,7 @@ udevadm trigger
 progresso "Instalando os arquivos de serviço do systemd"
 
 install -m 644 etc/systemd/scripts /etc/systemd
-install -m 644 etc/systemd/system/x-daemon@.service /etc/systemd/system
+install -m 644 etc/systemd/system/*.service /etc/systemd/system
 
 progresso "Atualizando o arquivo /etc/apt/sources.list"
 
