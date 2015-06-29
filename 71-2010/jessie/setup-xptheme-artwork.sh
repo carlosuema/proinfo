@@ -8,7 +8,6 @@ wget -c http://xfce-look.org/CONTENT/content-files/162880-XPTheme.zip -O xptheme
 unzip xptheme.zip -d /usr/local/share/themes
 mv /usr/local/share/themes/*.{jpg,png} /usr/local/share/lxde/images
 
-for theme in /usr/local/share/themes/*
-do
-    ln -sf ${theme} /usr/share/themes
-done
+ln -sf "/usr/local/share/themes/XP Blue" /usr/share/themes
+ln -sf "/usr/local/share/themes/XP Olive" /usr/share/themes
+ln -sf "/usr/local/share/themes/XP Silver" /usr/share/themes
