@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apt install --no-install-recommends gtk2-engines-pixbuf
+
 wget -c https://copy.com/R20vwNTRwu21kFiG/boxtheme.tar.gz?download=1 -O boxtheme.tar.gz
 wget -c https://copy.com/6HXRIlh0skL9e27S/boxicons.tar.gz?download=1 -O boxicons.tar.gz
 wget -c http://bazaar.launchpad.net/~lubuntu-art/lubuntu-artwork/quantal/download/head:/1504lubuntulogo.png-20141027134250-a73q706yynr2mx3v-4/1504-lubuntu-logo.png -O lubuntu-logo.png
