@@ -62,9 +62,11 @@ progresso "Instalando os arquivos de configuração do LightDM para multitermina
 install -m 644 -D etc/lightdm/lightdm.conf.d/logind.conf /etc/lightdm/lightdm.conf.d/logind.conf
 install -m 644 etc/lightdm/lightdm.conf.d/multi-seat-xephyr.conf /etc/lightdm/lightdm.conf.d
 
-progresso "Ativando o serviço do systemd necessário para o multiterminal"
+progresso "Ativando os serviços do systemd necessários para os computadores do Proinfo"
 
 systemctl enable x-daemon@:90.service
+systemctl enable zramswap.service
+systemctl start zramswap.service
 
 progresso "Instalando o ambiente de trabalho LXDE"
 
