@@ -4,7 +4,7 @@ do_apt() {
   apt install -y --no-install-recommends ${@}
 }
 
-do_apt gtk2-engines-pixbuf
+do_apt gtk2-engines-pixbuf libgtk2.0-bin libgtk-3-bin
 
 wget -c https://copy.com/R20vwNTRwu21kFiG/boxtheme.tar.gz?download=1 -O boxtheme.tar.gz
 wget -c https://copy.com/6HXRIlh0skL9e27S/boxicons.tar.gz?download=1 -O boxicons.tar.gz
@@ -21,6 +21,7 @@ install -m 644 lubuntu-logo.png /usr/local/share/lubuntu/images
 for theme in /usr/local/share/icons/*
 do
     gtk-update-icon-cache -ftq ${theme}
+    gtk-update-icon-cache-3.0 -ftq ${theme}
 done
 
 for theme in /usr/local/share/themes/*
