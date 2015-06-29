@@ -12,11 +12,11 @@ wget -c http://bazaar.launchpad.net/~lubuntu-art/lubuntu-artwork/quantal/downloa
 
 [ -d /usr/local/share/themes ] || mkdir -p /usr/local/share/themes
 [ -d /usr/local/share/icons ] || mkdir -p /usr/local/share/icons
-[ -d /usr/local/share/lubuntu/images ] || mkdir -p /usr/local/share/lubuntu/images
+[ -d /usr/local/share/lxde/images ] || mkdir -p /usr/local/share/lxde/images
 
 tar xzvf boxtheme.tar.gz -C /usr/local/share/themes
 tar xzvf boxicons.tar.gz -C /usr/local/share/icons
-install -m 644 lubuntu-logo.png /usr/local/share/lubuntu/images
+install -m 644 lubuntu-logo.png /usr/local/share/lxde/images
 
 for theme in /usr/local/share/icons/*
 do
