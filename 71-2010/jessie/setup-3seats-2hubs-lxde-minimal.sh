@@ -4,7 +4,7 @@ total_passos=16
 passo_atual=0
 
 progresso() {
-  total_passos=$(( total_passos + 1 ))
+  passo_atual=$(( passo_atual + 1 ))
   echo ">>> (${passo_atual}/${total_passos}) ${1}"
 }
 
