@@ -9,7 +9,7 @@ progresso() {
 }
 
 do_apt() {
-  apt install --no-install-recommends ${@}
+  apt install -y --no-install-recommends ${@}
 }
 
 progresso "Instalando os arquivos de regras do udev"
