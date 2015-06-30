@@ -1,7 +1,13 @@
 #!/bin/bash
 
-total_passos=16
+total_passos=12
 passo_atual=0
+
+pacotes_xorg="desktop-base xorg dbus-x11"
+pacotes_lightdm="lightdm"
+pacotes_lxde="lxde lxtask gtk2-engines gtk2-engines-murrine notification-daemon compton"
+pacotes_gvfs="gvfs-backends gvfs-fuse ntfs-3g dosfstools"
+pacotes_audio="pulseaudio pulseaudio-module-x11 rtkit"
 
 progresso() {
   passo_atual=$(( passo_atual + 1 ))
@@ -37,9 +43,9 @@ progresso "Preparando o sistema para a instalação dos novos pacotes"
 apt update
 apt -y upgrade
 
-progresso "Instalando os pacotes básicos do Xorg"
+progresso "Instalando os pacotes necessários"
 
-do_apt desktop-base xorg dbus-x11 compton
+do_apt ${pacotes_xorg} ${pacotes_lightdm} ${pacotes_lxde} ${pacotes_gvfs} ${pacotes_audio}
 
 progresso "Instalando o arquivo de auto-execução do compton"
 
@@ -50,10 +56,6 @@ progresso "Instalando os arquivos de configuração do Xorg para a placa de víd
 install -d /etc/X11/xorg.conf.d
 install -m 644 etc/X11/xorg.conf.d/*.conf.in /etc/X11/xorg.conf.d
 ln -sf /etc/X11/xorg.conf.d/tn502-2seats.conf.in /etc/X11/xorg.conf.d/tn502-2seats.conf
-
-progresso "Instalando o gerenciador de login LightDM"
-
-do_apt lightdm
 
 progresso "Instalando os scripts do LightDM para manipulação de contas de convidado"
 
@@ -68,18 +70,6 @@ progresso "Ativando os serviços do systemd necessários para os computadores do
 
 systemctl enable zramswap.service
 systemctl start zramswap.service
-
-progresso "Instalando o ambiente de trabalho LXDE"
-
-do_apt lxde lxtask gtk2-engines gtk2-engines-murrine notification-daemon
-
-progresso "Instalando a infra-estrutura necessária para gerenciamento de sistemas de arquivos"
-
-do_apt gvfs-backends gvfs-fuse ntfs-3g dosfstools
-
-progresso "Instalando o sistema de áudio"
-
-do_apt pulseaudio pulseaudio-module-x11 rtkit
 
 progresso "Ativando a interface gráfica"
 
