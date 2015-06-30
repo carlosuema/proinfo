@@ -16,8 +16,7 @@ progresso "Instalando os arquivos de regras do udev"
 
 install -m 644 etc/udev/rules.d/71-*.rules.in /etc/udev/rules.d
 install -m 644 etc/udev/rules.d/72-*.rules.in /etc/udev/rules.d
-ln -sf /etc/udev/rules.d/71-3seats-2hubs.rules.in /etc/udev/rules.d/71-tn-seat.rules
-ln -sf /etc/udev/rules.d/72-3seats-2hubs-late.rules.in /etc/udev/rules.d/72-tn-seat-late.rules
+ln -sf /etc/udev/rules.d/71-2seats-1hub.rules.in /etc/udev/rules.d/71-tn-seat.rules
 
 progresso "Ativando as novas regras do udev e trazendo os novos terminais à vida"
 
@@ -45,12 +44,13 @@ apt -y upgrade
 
 progresso "Instalando os pacotes básicos do Xorg"
 
-do_apt desktop-base xorg xserver-xephyr dbus-x11
+do_apt desktop-base xorg dbus-x11 compton
 
 progresso "Instalando os arquivos de configuração do Xorg para a placa de vídeo TN-502"
 
 install -d /etc/X11/xorg.conf.d
 install -m 644 etc/X11/xorg.conf.d/*.conf.in /etc/X11/xorg.conf.d
+ln -sf /etc/X11/xorg.conf.d/tn502-2seats.conf.in /etc/X11/xorg.conf.d/tn502-2seats.conf
 
 progresso "Instalando o gerenciador de login LightDM"
 
@@ -64,11 +64,9 @@ progresso "Instalando os arquivos de configuração do LightDM para multitermina
 
 install -d /etc/lightdm/lightdm.conf.d
 install -m 644 etc/lightdm/lightdm.conf.d/* /etc/lightdm/lightdm.conf.d
-ln -sf /etc/lightdm/lightdm.conf.d/xephyr-3seats.conf.in /etc/lightdm/lightdm.conf.d/xephyr-3seats.conf
 
 progresso "Ativando os serviços do systemd necessários para os computadores do Proinfo"
 
-systemctl enable x-daemon-3seats@:90.service
 systemctl enable zramswap.service
 systemctl start zramswap.service
 
