@@ -1,6 +1,6 @@
 #!/bin/bash
 
-total_passos=15
+total_passos=16
 passo_atual=0
 
 progresso() {
@@ -40,6 +40,10 @@ apt -y upgrade
 progresso "Instalando os pacotes básicos do Xorg"
 
 do_apt desktop-base xorg dbus-x11 compton
+
+progresso "Instalando o arquivo de auto-execução do compton"
+
+install -m 644 etc/xdg/autostart/compton.desktop /etc/xdg/autostart
 
 progresso "Instalando os arquivos de configuração do Xorg para a placa de vídeo TN-502"
 
