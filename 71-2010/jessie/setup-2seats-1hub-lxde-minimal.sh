@@ -1,6 +1,6 @@
 #!/bin/bash
 
-total_passos=16
+total_passos=15
 passo_atual=0
 
 progresso() {
@@ -31,11 +31,6 @@ install -m 644 etc/systemd/system/*.service /etc/systemd/system
 progresso "Atualizando o arquivo /etc/apt/sources.list"
 
 install -m 644 etc/apt/sources.list /etc/apt
-
-progresso "Adicionando o repositório próprio com os pacotes modificados para os computadores do ProInfo"
-
-install -m 644 etc/apt/sources.list.d/obs-home-lbssousa-multiseat-debian.list /etc/apt/sources.list.d
-apt-key add etc/apt/sources.list.d/obs-home-lbssousa-multiseat-debian.key
 
 progresso "Preparando o sistema para a instalação dos novos pacotes"
 
