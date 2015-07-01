@@ -1,5 +1,5 @@
 Section "Device"
-    MatchSeat "@X-DAEMON-SEAT@"
+    MatchSeat "__x-daemon:@TN502_DISPLAY@__"
     Identifier "videocard_sm501_dualhead"
     BusID "PCI:4:1:0"
     Driver "siliconmotion"
@@ -8,7 +8,7 @@ Section "Device"
 EndSection
 
 Section "Screen"
-    MatchSeat "@X-DAEMON-SEAT@"
+    MatchSeat "__x-daemon:@TN502_DISPLAY@__"
     Identifier "screen_sm501_dualhead"
     Device "videocard_sm501_dualhead"
     DefaultDepth 16

@@ -3,6 +3,9 @@
 total_passos=12
 passo_atual=0
 
+tn502_endereco="$(lspci | grep SM501 | cut -d' ' -f1 | sed 's/\./:/')"
+tn502_display=":$(echo ${tn502_endereco} | awk -F: '{ print $1 * 100 + $2 * 10 + $3 }')"
+
 pacotes_xorg="desktop-base xorg xserver-xephyr dbus-x11"
 pacotes_lightdm="lightdm"
 pacotes_lxde="lxde lxtask gtk2-engines gtk2-engines-murrine notification-daemon"
@@ -20,10 +23,8 @@ do_apt() {
 
 progresso "Instalando os arquivos de regras do udev"
 
-install -m 644 etc/udev/rules.d/71-*.rules.in /etc/udev/rules.d
-install -m 644 etc/udev/rules.d/72-*.rules.in /etc/udev/rules.d
-ln -sf /etc/udev/rules.d/71-3seats-3hubs.rules.in /etc/udev/rules.d/71-tn-seat.rules
-ln -sf /etc/udev/rules.d/72-3seats-3hubs-late.rules.in /etc/udev/rules.d/72-tn-seat-late.rules
+install -m 644 etc/udev/rules.d/71-3seats-3hubs.rules /etc/udev/rules.d
+install -m 644 etc/udev/rules.d/72-3seats-3hubs-late.rules /etc/udev/rules.d
 
 progresso "Ativando as novas regras do udev e trazendo os novos terminais à vida"
 
@@ -56,7 +57,8 @@ do_apt ${pacotes_xorg} ${pacotes_lightdm} ${pacotes_lxde} ${pacotes_gvfs} ${paco
 progresso "Instalando os arquivos de configuração do Xorg para a placa de vídeo TN-502"
 
 install -d /etc/X11/xorg.conf.d
-install -m 644 etc/X11/xorg.conf.d/*.conf.in /etc/X11/xorg.conf.d
+install -m 644 etc/X11/xorg.conf.d/tn502-3seats.conf.in /etc/X11/xorg.conf.d/tn502-3seats.conf
+sed -i -e "s/@TN502_ADDRESS@/${tn502_endereco}/" -e "s/@TN502_DISPLAY@/${tn502_display}/" /etc/X11/xorg.conf.d/tn502-3seats.conf
 
 progresso "Instalando os scripts do LightDM para manipulação de contas de convidado"
 
@@ -65,12 +67,13 @@ install -m 755 usr/local/sbin/* /usr/local/sbin
 progresso "Instalando os arquivos de configuração do LightDM para multiterminais"
 
 install -d /etc/lightdm/lightdm.conf.d
-install -m 644 etc/lightdm/lightdm.conf.d/* /etc/lightdm/lightdm.conf.d
-ln -sf /etc/lightdm/lightdm.conf.d/xephyr-3seats.conf.in /etc/lightdm/lightdm.conf.d/xephyr-3seats.conf
+install -m 644 etc/lightdm/lightdm.conf.d/logind.conf /etc/lightdm/lightdm.conf.d
+install -m 644 etc/lightdm/lightdm.conf.d/xephyr-3seats.conf.in /etc/lightdm/lightdm.conf.d/xephyr-3seats.conf
+sed -i -e "s/@TN502_DISPLAY@/${tn502_display}/" /etc/lightdm/lightdm.conf.d/xephyr-3seats.conf
 
 progresso "Ativando os serviços do systemd necessários para os computadores do Proinfo"
 
-systemctl enable x-daemon-3seats@:90.service
+systemctl enable x-daemon-3seats@${tn502_display}.service
 systemctl enable zramswap.service
 systemctl start zramswap.service
 

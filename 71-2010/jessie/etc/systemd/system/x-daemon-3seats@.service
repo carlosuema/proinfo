@@ -5,8 +5,7 @@ StopWhenUnneeded=true
 
 [Service]
 Type=forking
-ExecStartPre=/bin/cp /etc/X11/xorg.conf.d/tn502-3seats.conf.in /run/systemd/x-daemon-3seats%i.conf ; /bin/sed -i s/@X-DAEMON-SEAT@/__fake-seat%i__/g /run/systemd/x-daemon-3seats%i.conf
-ExecStart=/etc/systemd/scripts/x-daemon %i -seat __fake-seat%i__ -config /run/systemd/x-daemon-3seats%i.conf -nolisten tcp -dpms -s 0
+ExecStart=/etc/systemd/scripts/x-daemon %i -seat __x-daemon%i__ -nolisten tcp -dpms -s 0
 ExecStartPost=/usr/bin/xrandr -d %i --output VGA --auto --right-of LVDS
 
 [Install]

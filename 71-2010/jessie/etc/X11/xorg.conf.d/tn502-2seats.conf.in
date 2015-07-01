@@ -1,7 +1,7 @@
 Section "Device"
     MatchSeat "seat-tn"
     Identifier "videocard_sm501"
-    BusID "PCI:4:1:0"
+    BusID "PCI:@TN502_ADDRESS@"
     Driver "siliconmotion"
     Option "PanelSize" "1360x768"
 EndSection
