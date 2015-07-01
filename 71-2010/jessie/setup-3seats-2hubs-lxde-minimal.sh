@@ -8,7 +8,7 @@ tn502_display=":$(echo ${tn502_endereco} | awk -F: '{ print $1 * 100 + $2 * 10 +
 
 pacotes_xorg="desktop-base xorg xserver-xephyr dbus-x11"
 pacotes_lightdm="lightdm"
-pacotes_lxde="lxde lxtask gtk2-engines gtk2-engines-murrine notification-daemon"
+pacotes_lxde="lxde lxtask gtk2-engines notification-daemon"
 pacotes_gvfs="gvfs-backends gvfs-fuse ntfs-3g dosfstools"
 pacotes_audio="pulseaudio pulseaudio-module-x11 rtkit"
 

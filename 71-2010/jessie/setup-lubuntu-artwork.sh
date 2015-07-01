@@ -4,7 +4,7 @@ do_apt() {
   apt install -y --no-install-recommends ${@}
 }
 
-do_apt gtk2-engines-pixbuf
+do_apt gtk2-engines-pixbuf gtk2-engines-murrine
 
 wget -c https://copy.com/R20vwNTRwu21kFiG/boxtheme.tar.gz?download=1 -O boxtheme.tar.gz
 wget -c https://copy.com/6HXRIlh0skL9e27S/boxicons.tar.gz?download=1 -O boxicons.tar.gz
