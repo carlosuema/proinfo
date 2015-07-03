@@ -7,7 +7,7 @@ tn502_endereco="$(lspci | grep SM501 | cut -d' ' -f1 | sed 's/\./:/')"
 
 pacotes_xorg="desktop-base xorg dbus-x11"
 pacotes_lightdm="lightdm"
-pacotes_xfce="xfce4 thunar-volman gtk3-engines-xfce xfce4-goodies xfce4-whiskermenu-plugin network-manager-gnome system-config-printer"
+pacotes_xfce="xfce4 thunar-volman gtk3-engines-xfce xfce4-goodies xfce4-whiskermenu-plugin"
 pacotes_gvfs="gvfs-backends gvfs-fuse ntfs-3g dosfstools"
 pacotes_audio="pulseaudio pulseaudio-module-x11 rtkit"
 
