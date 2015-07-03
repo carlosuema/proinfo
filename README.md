@@ -3,9 +3,9 @@ Coleção de arquivos de configuração dos multiterminais para Debian GNU/Linux
 
 # Números obtidos com o Debian 8 configurado para 3 terminais
 
-* Testes realizados em um computador do pregão 71/2010 no dia 03/07/2015.
+* Testes realizados em um computador do pregão 71/2010 no dia 03/07/2015. Os resultados podem variar de um computador para outro.
 * Tempo médio de boot (da tela do GRUB à tela de login): **18 segundos**
-* Para as tabelas abaixo, a margem de erro foi estimada em ±2MB.
+* Para as tabelas abaixo, a margem de erro foi estimada em ±5MB.
 
 |Consumo de memória RAM em uma instalação normal para 3 terminais | LXDE  | XFCE  | MATE  |
 |-----------------------------------------------------------------|-------|-------|-------|
