@@ -8,7 +8,7 @@ tn502_display=":$(echo ${tn502_endereco} | awk -F: '{ print $1 * 100 + $2 * 10 +
 
 pacotes_xorg="desktop-base xorg xserver-xephyr dbus-x11"
 pacotes_lightdm="lightdm"
-pacotes_mate="mate-desktop-environment atril engrampa eom ffmpegthumbnailer mate-applets mate-media mate-notification-daemon mate-system-monitor pluma"
+pacotes_mate="mate-desktop-environment atril engrampa eom ffmpegthumbnailer mate-applets mate-themes mate-media mate-notification-daemon mate-system-monitor pluma"
 pacotes_gvfs="gvfs-backends gvfs-fuse ntfs-3g dosfstools"
 pacotes_audio="pulseaudio pulseaudio-module-x11 rtkit"
 

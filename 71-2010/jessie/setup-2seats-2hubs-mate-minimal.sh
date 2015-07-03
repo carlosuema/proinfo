@@ -7,7 +7,7 @@ tn502_endereco="$(lspci | grep SM501 | cut -d' ' -f1 | sed 's/\./:/')"
 
 pacotes_xorg="desktop-base xorg dbus-x11"
 pacotes_lightdm="lightdm"
-pacotes_mate="mate-desktop-environment atril engrampa eom ffmpegthumbnailer mate-applets mate-media mate-notification-daemon mate-system-monitor pluma"
+pacotes_mate="mate-desktop-environment atril engrampa eom ffmpegthumbnailer mate-applets mate-themes mate-media mate-notification-daemon mate-system-monitor pluma"
 pacotes_gvfs="gvfs-backends gvfs-fuse ntfs-3g dosfstools"
 pacotes_audio="pulseaudio pulseaudio-module-x11 rtkit"
 
