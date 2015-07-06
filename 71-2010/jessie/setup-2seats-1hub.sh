@@ -12,7 +12,7 @@ progresso() {
 
 progresso "Instalando os arquivos de regras do udev"
 
-install -m 644 etc/udev/rules.d/71-2seats-1hub.rules /etc/udev/rules.d
+install -m 644 etc/udev/rules.d/71-usb-2seats-1hub.rules /etc/udev/rules.d
 
 progresso "Ativando as novas regras do udev e trazendo os novos terminais à vida"
 

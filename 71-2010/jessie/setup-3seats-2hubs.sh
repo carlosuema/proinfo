@@ -17,8 +17,8 @@ do_apt() {
 
 progresso "Instalando os arquivos de regras do udev"
 
-install -m 644 etc/udev/rules.d/71-3seats-2hubs.rules /etc/udev/rules.d
-install -m 644 etc/udev/rules.d/72-3seats-2hubs-late.rules /etc/udev/rules.d
+install -m 644 etc/udev/rules.d/71-usb-3seats-2hubs.rules /etc/udev/rules.d
+install -m 644 etc/udev/rules.d/72-usb-3seats-late.rules /etc/udev/rules.d
 
 progresso "Ativando as novas regras do udev e trazendo os novos terminais à vida"
 
