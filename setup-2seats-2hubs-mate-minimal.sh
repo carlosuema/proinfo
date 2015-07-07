@@ -5,11 +5,12 @@ passo_atual=0
 
 tn502_endereco="$(lspci | grep SM501 | cut -d' ' -f1 | sed 's/\./:/')"
 
-pacotes_xorg="desktop-base xorg dbus-x11"
+pacotes_base="desktop-base"
+pacotes_xorg="xorg"
 pacotes_lightdm="lightdm"
-pacotes_mate="mate-desktop-environment atril engrampa eom ffmpegthumbnailer mate-applets mate-themes mate-media mate-notification-daemon mate-system-monitor pluma"
-pacotes_gvfs="gvfs-backends gvfs-fuse ntfs-3g dosfstools"
-pacotes_audio="pulseaudio pulseaudio-module-x11 rtkit"
+pacotes_mate="mate-desktop-environment-core mate-themes mate-applets mate-notification-daemon mate-media atril engrampa eom ffmpegthumbnailer mate-system-monitor pluma caja-gksu caja-open-terminal caja-share"
+pacotes_gvfs="ntfs-3g dosfstools"
+pacotes_audio="rtkit"
 
 progresso() {
   passo_atual=$(( passo_atual + 1 ))
