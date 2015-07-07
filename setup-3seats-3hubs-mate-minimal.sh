@@ -53,7 +53,7 @@ apt -y upgrade
 
 progresso "Instalando os pacotes necessários"
 
-do_apt ${pacotes_xorg} ${pacotes_lightdm} ${pacotes_mate} ${pacotes_gvfs} ${pacotes_audio}
+do_apt ${pacotes_base} ${pacotes_xorg} ${pacotes_lightdm} ${pacotes_mate} ${pacotes_gvfs} ${pacotes_audio}
 
 progresso "Instalando os arquivos de configuração do Xorg para a placa de vídeo TN-502"
 
