@@ -89,6 +89,10 @@ No momento, sugerimos a seguinte tabela de partições para o disco rígido:
 
 Ao finalizar a configuração da tabela de partições segundo o modelo acima, o instalador do Debian deve alertar o administrador sobre a falta de uma **partição de troca (swap)**. O administrador deve ler o alerta com atenção e confirmar que deseja prosseguir com a instalação, mesmo sem uma partição de troca (a falta dela será compensada pelo uso da tecnologia *ZRam*, que será ativado pelos scripts de auto-configuração do multiterminal).
 
+## Opções de ambiente de trabalho
+
+O Debian oferece diversas opções de ambiente de trabalho no ato da instalação (GNOME, KDE, Cinnamon, MATE, XFCE e LXDE). Nós recomendamos os ambientes MATE, XFCE ou LXDE para os computadores multiterminais, pois são leves e carregam rapidamente, deixando o computador pronto para uso em poucos segundos e não exigindo demais da placa de vídeo TN-502, que não possui aceleração gráfica. Em termos de consumo de memória RAM, os três ambientes ficaram praticamente empatados em nossos testes (ver tabelas abaixo), de modo que a decisão final vai depender muito da preferência do administrador.
+
 ## Instalação normal X Instalação mínima
 
 Os scripts de auto-configuração do multiterminal disponíveis neste repositório variam de acordo com o tipo de instalação escolhida para o Debian. Para entender a diferença, observe a figura abaixo:
@@ -96,11 +100,11 @@ Os scripts de auto-configuração do multiterminal disponíveis neste repositór
 
 ### Instalação normal
 
-Na tela acima do instalador do Debian, marque apenas as opções **Ambiente de trabalho Debian**, o ambiente de trabalho desejado (para os computadores multiterminais, recomendamos o LXDE, o XFCE ou o MATE), **Servidor de impressão** e **Servidor SSH**. Ao final da instalação, você terá um ambiente de trabalho já pronto para uso, bastando executar posteriormente um dos scripts `setup-2seats-1hub.sh`, `setup-2seats-2hubs.sh`, `setup-3seats-2hubs.sh` ou `setup-3seats-3hubs.sh` para finalizar a configuração do multiterminal.
+Na tela acima do instalador do Debian, marque apenas as opções **Ambiente de trabalho Debian**, o ambiente de trabalho desejado, **Servidor de impressão** e **Servidor SSH**. Ao final da instalação, você terá um ambiente de trabalho já pronto para uso, bastando executar posteriormente um dos scripts `setup-2seats-1hub.sh`, `setup-2seats-2hubs.sh`, `setup-3seats-2hubs.sh` ou `setup-3seats-3hubs.sh`, dependendo do perfil desejado, para finalizar a configuração do multiterminal.
 
 ### Instalação mínima
 
-Na tela acima do instalador do Debian, marque apenas as opções **Servidor de impressão** e **Servidor SSH**, ou seja, não marque a opção **Ambiente de trabalho Debian**. Ao final da instalação, você terá apenas uma interface de linha de comando (console), mas poderá instalar facilmente o ambiente de trabalho desejado já com o multiterminal pré-configurado executando um dos scripts disponíveis. As famílias de scripts `setup-*-lxde-minimal.sh`, `setup-*-xfce-minimal.sh` e `setup-*-mate-minimal.sh` instalam os ambientes de trabalho LXDE, XFCE e MATE, respectivamente. Escolha o script de acordo com o perfil de multiterminal desejado (exemplo: o script `setup-3seats-2hubs-mate-minimal.sh` instala o ambiente de trabalho MATE e configura o sistema para 3 terminais usando 2 hubs).
+Na tela acima do instalador do Debian, marque apenas as opções **Servidor de impressão** e **Servidor SSH**, ou seja, não marque a opção **Ambiente de trabalho Debian**. Ao final da instalação, você terá apenas uma interface de linha de comando (console), mas poderá instalar facilmente o ambiente de trabalho desejado já com o multiterminal pré-configurado executando um dos scripts disponíveis. As famílias de scripts `setup-*-lxde-minimal.sh`, `setup-*-xfce-minimal.sh` e `setup-*-mate-minimal.sh` instalam os ambientes de trabalho LXDE, XFCE e MATE, respectivamente, e configuram o multiterminal de acordo com o perfil escolhido (exemplo: o script `setup-3seats-2hubs-mate-minimal.sh` instala o ambiente de trabalho MATE e configura o sistema para 3 terminais usando 2 hubs).
 
 Vale ressaltar que os scripts em questão realizam apenas a instalação mínima necessária para rodar o ambiente de trabalho com o multiterminal. Outros aplicativos (navegador web, reprodutor multimídia, plugins e applets adicionais do ambiente de trabalho, etc.) poderão ser instalados em um segundo momento, a critério do administrador. Com essa iniciativa, é possível reduzir consideravelmente o consumo de memória RAM (ver tabelas abaixo), dependendo do ambiente de trabalho escolhido, pois deixamos de instalar certos serviços desnecessários para os computadores do ProInfo, mas que são instalados por padrão em uma instalação normal do Debian.
 
