@@ -53,16 +53,52 @@ Neste caso, como temos 2 hubs USB idênticos em operação, o sistema somente co
 
 Nestes casos, os arquivos de pré-configuração do multiterminal estão preparados de tal forma que um terminal secundário utilize a **porta USB 2** em conjunto com a **saída de vídeo VGA**, enquanto outro utilize a **porta USB 4** em conjunto com a **saída de vídeo LVDS**. As portas USB 1 e 3 ficam disponíveis para o terminal primário, que pode utilizar, ou não, um hub USB para conectar teclado e mouse.
 
-# Instalação normal X Instalação mínima
+Estes perfis exigem a instalação de uma versão modificada do pacote *xserver-xephyr* ([64 bits](http://download.opensuse.org/repositories/home:/lbssousa:/multiseat:/debian/Debian_8.0/amd64/xserver-xephyr_1.16.4-1+deb8u1~multiseat1_amd64.deb), [32 bits](http://download.opensuse.org/repositories/home:/lbssousa:/multiseat:/debian/Debian_8.0/amd64/xserver-xephyr_1.16.4-1+deb8u1~multiseat1_i386.deb)), bem como sua dependência *xserver-common*  ([64 bits](http://download.opensuse.org/repositories/home:/lbssousa:/multiseat:/debian/Debian_8.0/amd64/xserver-common_1.16.4-1+deb8u1~multiseat1_amd64.deb), [32  bits](http://download.opensuse.org/repositories/home:/lbssousa:/multiseat:/debian/Debian_8.0/amd64/xserver-common_1.16.4-1+deb8u1~multiseat1_i386.deb)), mas os scripts de auto-configuração do multiterminal se encarregam de instalar esses pacotes, o que não deve trazer grandes dificuldades para o administrador. Tais modificações já foram [submetidas para revisão](http://lists.x.org/archives/xorg-devel/2015-June/046697.html) aos desenvolvedores do projeto X.Org.
+
+# Instalação do Debian 8
+
+A instalação do Debian em si não deve trazer grandes desafios para o administrador, então não vamos entrar em detalhes aqui. No entanto, vale a pena fazer algumas observações:
+
+## Senha de root
+
+Diferentemente do instalador do Ubuntu, por exemplo, o instalador do Debian permite configurar explicitamente a senha de *root*. Caso o administrador não deseje criá-la, basta deixar o campo da senha em branco (neste caso, o usuário comum que será criado em seguida será o administrador do sistema, com pregorrativa de uso do comando *sudo* para executar comandos como *root*, assim como no Ubuntu).
+
+## Particionamento do disco rígido
+
+É possível que o administrador não se sinta muito confortável com o particionador de disco do Debian. Neste caso, sugerimos fazer o particionamento prévio do disco utilizando um LiveCD de outro sistema (Ubuntu, por exemplo) que ofereça a ferramenta gráfica de particionamento **GParted**, antes de executar o instalador do Debian.
+
+**Não exclua nem formate sua partição do Linux Educacional (sda1)!** Ela pode ser importante para contornar um eventual "bug da tela listrada" (ver abaixo). Em vez disso, reduza o seu tamanho e instale o Debian lado a lado no espaço restante.
+
+No momento, sugerimos a seguinte tabela de partições para o disco rígido:
+
+* **sda1**
+  * Reduzir o tamanho para um valor apropriado (entre 6 e 10GB, dependendo da intenção de continuar usando o Linux Educacional)
+  * Usar com o sistema de arquivos **ext4**
+  * Não formatar
+  * Montar em `/mnt/le` **[opcional]**
+* **sda2**
+  * Tamanho: 500MB
+  * Usar com o sistema de arquivos **ext2**
+  * Formatar
+  * Montar em `/boot`
+* **sda3**
+  * Usar todo o espaço restante do disco
+  * Usar com o sistema de arquivos **btrfs** ou **ext4**
+  * Formatar
+  * Montar em `/`
+
+Ao finalizar a configuração da tabela de partições segundo o modelo acima, o instalador do Debian deve alertar o administrador sobre a falta de uma **partição de troca (swap)**. O administrador deve ler o alerta com atenção e confirmar que deseja prosseguir com a instalação, mesmo sem uma partição de troca (a falta dela será compensada pelo uso da tecnologia *ZRam*, que será ativado pelos scripts de auto-configuração do multiterminal).
+
+## Instalação normal X Instalação mínima
 
 Os scripts de auto-configuração do multiterminal disponíveis neste repositório variam de acordo com o tipo de instalação escolhida para o Debian. Para entender a diferença, observe a figura abaixo:
 ![debian-installer](doc/debian-installer-desktop.jpg)]
 
-## Instalação normal
+### Instalação normal
 
 Na tela acima do instalador do Debian, marque apenas as opções **Ambiente de trabalho Debian**, o ambiente de trabalho desejado (para os computadores multiterminais, recomendamos o LXDE, o XFCE ou o MATE), **Servidor de impressão** e **Servidor SSH**. Ao final da instalação, você terá um ambiente de trabalho já pronto para uso, bastando executar posteriormente um dos scripts `setup-2seats-1hub.sh`, `setup-2seats-2hubs.sh`, `setup-3seats-2hubs.sh` ou `setup-3seats-3hubs.sh` para finalizar a configuração do multiterminal.
 
-## Instalação mínima
+### Instalação mínima
 
 Na tela acima do instalador do Debian, marque apenas as opções **Servidor de impressão** e **Servidor SSH**, ou seja, não marque a opção **Ambiente de trabalho Debian**. Ao final da instalação, você terá apenas uma interface de linha de comando (console), mas poderá instalar facilmente o ambiente de trabalho desejado já com o multiterminal pré-configurado executando um dos scripts disponíveis. As famílias de scripts `setup-*-lxde-minimal.sh`, `setup-*-xfce-minimal.sh` e `setup-*-mate-minimal.sh` instalam os ambientes de trabalho LXDE, XFCE e MATE, respectivamente. Escolha o script de acordo com o perfil de multiterminal desejado (exemplo: o script `setup-3seats-2hubs-mate-minimal.sh` instala o ambiente de trabalho MATE e configura o sistema para 3 terminais usando 2 hubs).
 
