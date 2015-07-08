@@ -108,6 +108,40 @@ Na tela acima do instalador do Debian, marque apenas as opções **Servidor de i
 
 Vale ressaltar que os scripts em questão realizam apenas a instalação mínima necessária para rodar o ambiente de trabalho com o multiterminal. Outros aplicativos (navegador web, reprodutor multimídia, plugins e applets adicionais do ambiente de trabalho, etc.) poderão ser instalados em um segundo momento, a critério do administrador. Com essa iniciativa, é possível reduzir consideravelmente o consumo de memória RAM (ver tabelas abaixo), dependendo do ambiente de trabalho escolhido, pois deixamos de instalar certos serviços desnecessários para os computadores do ProInfo, mas que são instalados por padrão em uma instalação normal do Debian.
 
+# O bug da tela listrada
+
+Após instalar o Debian e reiniciar o computador, é possível que alguns dos seus computadores apresentem o seguinte problema:
+![bug-tela-listrada](doc/bug-tela-listrada.jpg)
+
+Não sabemos se o problema está ligado a algum bug no driver de vídeo ou alguma inconsistência deste em relação ao hardware em particular da placa TN-502, mas sabemos que ele somente se manifesta quando o computador é desligado e ligado novamente. É possível contornar o problema iniciando o computador uma vez no Linux Educacional e depois reiniciando de volta para o Debian.
+
+Os scripts de auto-configuração do multiterminal já instalam serviços do systemd para agendar o próximo boot para o Linux Educacional quando o computador é desligado, mas não reiniciado. No Linux Educacional, por sua vez, é possível criar um script para automatizar o reinício automático de volta para o Debian, após certificar-se de que a placa TN-502 voltou ao normal.
+
+## Agendando o próximo boot para o Linux Educacional
+
+Para agendar o próximo boot para o Linux Educacional nos computadores que manifestarem o problema da tela listrada, escolha uma das seguintes alternativas:
+
+### Alternativa 1 (mais simples)
+
+A primeira alternativa envolve um único serviço, que agenda o próximo boot quando o computador é desligado. Para ativar o serviço, execute o seguinte comando, como *root*:
+
+```
+systemctl enable le-nextboot-poweroff@2
+```
+
+O número 2 no exemplo acima refere-se à terceira entrada, de cima para baixo, no menu do GRUB, onde normalmente está a opção do Linux Educacional. Se o seu caso for diferente, troque o número acima de acordo. Vale ressaltar que esta alternativa vai falhar se o seu computador for desligado à força (queda de energia, por exemplo).
+
+### Alternativa 2 (mais robusta)
+
+A segunda alternativa envolve dois serviços, um que agenda o próximo boot quando o computador é ligado e outro que cancela o agendamento quando ele é reiniciado. Para ativar os serviços, execute os seguintes comandos, como *root*:
+
+```
+systemctl enable le-nextboot-read-write@2
+systemctl enable le-nextboot-reboot
+```
+
+Esta alternativa deve funcionar mesmo se o computador for desligado à força, mas deve falhar caso o equipamento seja reiniciado pelo botão *Reset*.
+
 # Números obtidos com o Debian 8 configurado para 3 terminais
 
 * Testes realizados em um computador do pregão 71/2010 no dia 03/07/2015. Os resultados podem variar de um computador para outro.
