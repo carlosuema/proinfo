@@ -17,6 +17,42 @@ Os computadores do pregão FNDE **68/2009 (2º lote)**, que possuem um par de pl
 
 Não sabemos se este procedimento se aplica aos computadores do pregão FNDE **23/2012**, pois não temos informações sobre as suas especificações de *hardware* e não dispomos de equipamentos deste pregão para testes.
 
+# Perfis de configuração do multiterminal
+
+Os scripts de auto-configuração do multiterminal estão organizados em 4 perfis de configuração possíveis, a saber:
+
+* **2 terminais, 1 hub:** o teclado e mouse do terminal primário são ligados diretamente ao computador, enquanto um hub USB é utilizado com o terminal secundário.
+* **3 terminais, 2 hubs:** o teclado e mouse do terminal primário são ligados diretamente ao computador, enquanto hubs USB são utilizados com os terminais secundários.
+* **2 terminais, 2 hubs:** ambos os terminais primário e secundário usam hubs USB para conectar teclado e mouse.
+* **3 terminais, 3 hubs:** todos os 3 terminais usam hubs USB para conectar teclado e mouse.
+
+A menos que o administrador deseje continuar utilizando o Linux Educacional lado a lado com o Debian 8, ou simplesmente não possa conectar o teclado e mouse do terminal primário diretamente ao computador (terminais muito afastados do computador, portas USB ocupadas com outros periféricos, etc.), é altamente recomendável que se retire o hub USB do terminal primário, conectando teclado e mouse diretamente ao computador (perfis "2 terminais, 1 hub" ou "3 terminais, 2 hubs").
+
+## Disposição das portas USB e saídas de vídeo no computador
+
+Todos os perfis de configuração do multiterminal, exceto o "2 terminais, 1 hub", assumem uma escolha prévia da porta USB e/ou da saída de vídeo à qual estarão associados os terminais secundários. No computador do pregão 71/2010 no qual os arquivos deste repositório foram preparados, a disposição das portas USB no painel traseiro do computador é a seguinte:
+
+  Porta USB 3   |   Porta USB 1
+----------------|----------------
+**Porta USB 4** | **Porta USB 2**
+
+Da mesma forma, as saídas de vídeo da placa TN-502 estão dispostas na seguinte ordem:
+
+Saída de vídeo VGA | Saída de vídeo LVDS
+-------------------|--------------------
+
+## Perfil "2 terminais, 1 hub"
+
+Este é o perfil mais simples de todos. Como há um único hub USB em operação, é fácil para o sistema identificá-lo. Neste caso, os arquivos de pré-configuração do multiterminal funcionam corretamente, seja qual for a porta USB na qual o hub esteja conectado. Pode-se ligar o monitor secundário a qualquer uma das saídas de vídeo da placa TN-502.
+
+## Perfil "2 terminais, 2 hubs"
+
+Neste caso, como temos 2 hubs USB idênticos em operação, o sistema somente consegue distingui-los pelo endereço da porta USB na qual estão conectados (o mesmo acontece nos demais perfis abaixo). Os arquivos de pré-configuração aqui disponíveis reservam a **porta USB 4** para que se conecte o hub USB associado ao terminal secundário. Pode-se ligar o monitor secundário a qualquer uma das saídas de vídeo da placa TN-502.
+
+## Perfis "3 terminais, 2 hubs" e "3 terminais, 3 hubs"
+
+Nestes casos, os arquivos de pré-configuração do multiterminal estão preparados de tal forma que um terminal secundário utilize a **porta USB 2** em conjunto com a **saída de vídeo VGA**, enquanto outro utilize a **porta USB 4** em conjunto com a **saída de vídeo LVDS**. As portas USB 1 e 3 ficam disponíveis para o terminal primário, que pode utilizar, ou não, um hub USB para conectar teclado e mouse.
+
 # Instalação normal X Instalação mínima
 
 Os scripts de auto-configuração do multiterminal disponíveis neste repositório variam de acordo com o tipo de instalação escolhida para o Debian. Para entender a diferença, observe a figura abaixo:
