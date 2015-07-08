@@ -6,7 +6,8 @@ passo_atual=0
 tn502_endereco="$(lspci | grep SM501 | cut -d' ' -f1 | sed 's/\./:/')"
 tn502_display=":$(echo ${tn502_endereco} | awk -F: '{ print $1 * 100 + $2 * 10 + $3 }')"
 
-pacotes_xorg="desktop-base xorg xserver-xephyr dbus-x11"
+pacotes_base="destop-base"
+pacotes_xorg="xorg xserver-xephyr dbus-x11"
 pacotes_lightdm="lightdm"
 pacotes_lxde="lxde lxtask gtk2-engines notification-daemon"
 pacotes_gvfs="gvfs-backends gvfs-fuse ntfs-3g dosfstools"
@@ -52,7 +53,7 @@ apt -y upgrade
 
 progresso "Instalando os pacotes necessários"
 
-do_apt ${pacotes_xorg} ${pacotes_lightdm} ${pacotes_lxde} ${pacotes_gvfs} ${pacotes_audio}
+do_apt ${pacotes_base} ${pacotes_xorg} ${pacotes_lightdm} ${pacotes_lxde} ${pacotes_gvfs} ${pacotes_audio}
 
 progresso "Instalando os arquivos de configuração do Xorg para a placa de vídeo TN-502"
 

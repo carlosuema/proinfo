@@ -5,7 +5,8 @@ passo_atual=0
 
 tn502_endereco="$(lspci | grep SM501 | cut -d' ' -f1 | sed 's/\./:/')"
 
-pacotes_xorg="desktop-base xorg dbus-x11"
+pacotes_base="desktop-base"
+pacotes_xorg="xorg dbus-x11"
 pacotes_lightdm="lightdm"
 pacotes_lxde="lxde lxtask gtk2-engines notification-daemon compton"
 pacotes_gvfs="gvfs-backends gvfs-fuse ntfs-3g dosfstools"
@@ -45,7 +46,7 @@ apt -y upgrade
 
 progresso "Instalando os pacotes necessários"
 
-do_apt ${pacotes_xorg} ${pacotes_lightdm} ${pacotes_lxde} ${pacotes_gvfs} ${pacotes_audio}
+do_apt ${pacotes_base} ${pacotes_xorg} ${pacotes_lightdm} ${pacotes_lxde} ${pacotes_gvfs} ${pacotes_audio}
 
 progresso "Instalando o arquivo de auto-execução do compton"
 
