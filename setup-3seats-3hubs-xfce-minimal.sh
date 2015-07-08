@@ -6,9 +6,10 @@ passo_atual=0
 tn502_endereco="$(lspci | grep SM501 | cut -d' ' -f1 | sed 's/\./:/')"
 tn502_display=":$(echo ${tn502_endereco} | awk -F: '{ print $1 * 100 + $2 * 10 + $3 }')"
 
-pacotes_xorg="desktop-base xorg xserver-xephyr dbus-x11"
+pacotes_base="desktop-base"
+pacotes_xorg="xorg xserver-xephyr"
 pacotes_lightdm="lightdm"
-pacotes_xfce="xfce4 thunar-volman gtk3-engines-xfce xfce4-goodies xfce4-whiskermenu-plugin"
+pacotes_xfce="xfce4 tango-icon-theme thunar-volman gtk3-engines-xfce xfce4-whiskermenu-plugin mousepad ristretto thunar-archive-plugin thunar-media-tags-plugin xfburn xfce4-artwork xfce4-datetime-plugin xfce4-mount-plugin xfce4-netload-plugin xfce4-notifyd xfce4-places-plugin xfce4-quicklauncher-plugin xfce4-systemload-plugin xfce4-taskmanager xfce4-terminal xfce4-volumed"
 pacotes_gvfs="gvfs-backends gvfs-fuse ntfs-3g dosfstools"
 pacotes_audio="pulseaudio pulseaudio-module-x11 rtkit"
 
@@ -52,7 +53,7 @@ apt -y upgrade
 
 progresso "Instalando os pacotes necessários"
 
-do_apt ${pacotes_xorg} ${pacotes_lightdm} ${pacotes_xfce} ${pacotes_gvfs} ${pacotes_audio}
+do_apt ${pacotes_base} ${pacotes_xorg} ${pacotes_lightdm} ${pacotes_xfce} ${pacotes_gvfs} ${pacotes_audio}
 
 progresso "Instalando os arquivos de configuração do Xorg para a placa de vídeo TN-502"
 
