@@ -7,6 +7,16 @@ Com o lançamento da versão 8 - codinome [Jessie](https://www.debian.org/News/2
 
 Desde que as primeiras distribuições Linux com o systemd incluído começaram a ser lançadas, temos estudado a melhor forma de utilizá-las com os computadores multiterminais do ProInfo. Os primeiros frutos deste estudo foram os tutoriais de configuração do multiterminal para [Ubuntu 14.04 LTS](https://www.overleaf.com/read/btwzqzgxcgsh) e [openSUSE 13.2](https://www.overleaf.com/read/nrytsgpnzwcj). A partir da experiência adquirida com a elaboração destes tutoriais, trazemos agora uma nova abordagem para o Debian 8 "Jessie": um conjunto de scripts e arquivos de configuração genéricos que permitem uma pré-configuração automática do multiterminal.
 
+# A quais pregões do ProInfo este material se aplica?
+
+O procedimento aqui descrito foi testado em computadores dos pregões FNDE **83/2008** e **71/2010**, que possuem 2 ou 3 terminais e utilizam uma placa de vídeo [ThinNetworks TN-502 Dual](http://www.thinnetworks.com.br/wp-content/files_mf/1330608460DatasheetTN502DualQuadEight.pdf), baseada no chip [Silicon Motion SM501](http://d1.amobbs.com/bbs_upload782111/files_27/ourdev_538633.pdf). Essa placa utiliza o driver de vídeo [xf86-video-siliconmotion](http://cgit.freedesktop.org/xorg/driver/xf86-video-siliconmotion/), que, apesar de antigo, ainda funciona em distribuições Linux modernas, com algumas ressalvas (bug da tela listrada, ver mais abaixo).
+
+Os computadores dos pregões FNDE **69/2008** e **68/2009 (1º lote)**, que possuem uma placa de vídeo [ThinNetworks ATI Rage XL Quad](http://wiki.thinnetworks.com.br/Especifica%C3%A7%C3%B5es-ATI-Rage-XL-Editando.html), utilizariam o driver de vídeo [xf86-video-mach64](http://cgit.freedesktop.org/xorg/driver/xf86-video-mach64/). Infelizmente, porém, esse driver não é mais mantido pela comunidade e deixou de funcionar corretamente nessa placa em distribuições Linux lançadas nos últimos 5 anos. Portanto, os computadores destes pregões **não** são elegíveis à utilização do multiterminal no Debian 8, a menos que seja feita a substituição da placa de vídeo por outra compatível.
+
+Os computadores do pregão FNDE **68/2009 (2º lote)**, que possuem um par de placas TN-502 Dual, são elegíveis à utilização do multiterminal no Debian 8. No entanto, algumas adaptações se fazem necessárias nos scripts e arquivos de configuração, o que ainda não fizemos por não dispormos de equipamentos deste pregão para realizar os testes.
+
+Não sabemos se este procedimento se aplica aos computadores do pregão FNDE **23/2012**, pois não temos informações sobre as suas especificações de *hardware* e não dispomos de equipamentos deste pregão para testes.
+
 # Instalação normal X Instalação mínima
 
 Os scripts de auto-configuração do multiterminal disponíveis neste repositório variam de acordo com o tipo de instalação escolhida para o Debian. Para entender a diferença, observe a figura abaixo:
