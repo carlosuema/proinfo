@@ -1,6 +1,11 @@
 # proinfo-debian-config
 
-Coleção de arquivos de configuração dos multiterminais para Debian GNU/Linux em computadores do ProInfo
+Coleção de arquivos de configuração dos multiterminais para Debian GNU/Linux em computadores do ProInfo.
+
+Para obter uma cópia deste repositório, execute o seguinte comando:
+```
+git clone git://github.com/oiteam/proinfo-debian-config
+```
 
 # Instruções de instalação e configuração
 
