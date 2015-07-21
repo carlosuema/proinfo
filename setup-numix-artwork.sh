@@ -1,6 +1,6 @@
 #!/bin/bash
 
-do_apt gtk2-engines-murrine
+apt install --no-install-recommends gtk2-engines-murrine
 
 [ -d /usr/local/share/themes ] || mkdir -p /usr/local/share/themes
 [ -d /usr/local/share/icons ] || mkdir -p /usr/local/share/icons

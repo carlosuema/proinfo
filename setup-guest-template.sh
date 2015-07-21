@@ -1,6 +1,6 @@
 #!/bin/sh
 mkdir /etc/guest-session
-adduser --create-home --home /etc/guest-session/skel --gecos "Modelo para Sessão de Convidado" --shell /bin/bash guest-template
+adduser --home /etc/guest-session/skel --gecos "Modelo para Sessão de Convidado" --shell /bin/bash guest-template
 echo 'touch ${HOME}/.skip-guest-warning-dialog' >> /etc/guest-session/prefs.sh
 touch /etc/guest-session/auto.sh
 mkdir -m 0777 /var/guest-data
