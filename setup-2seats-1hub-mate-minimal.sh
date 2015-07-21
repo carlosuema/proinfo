@@ -8,7 +8,7 @@ tn502_endereco="$(lspci | grep SM501 | cut -d' ' -f1 | sed 's/\./:/')"
 pacotes_base="desktop-base"
 pacotes_xorg="xorg"
 pacotes_lightdm="lightdm"
-pacotes_mate="mate-desktop-environment-core mate-themes mate-applets mate-notification-daemon mate-media atril engrampa eom ffmpegthumbnailer mate-system-monitor pluma caja-gksu caja-open-terminal caja-share"
+pacotes_mate="mate-desktop-environment-core mate-themes mate-applets mate-notification-daemon mate-media atril engrampa eom ffmpegthumbnailer mate-system-monitor pluma caja-gksu caja-open-terminal caja-share system-config-printer system-config-printer-udev cups-pk-helper"
 pacotes_gvfs="ntfs-3g dosfstools"
 pacotes_audio="rtkit"
 
