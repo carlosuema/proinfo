@@ -47,14 +47,14 @@ add_account ()
   else
     # does not exist, so create it
     adduser --system --force-badname --no-create-home --home / --gecos $(gettext "Guest") --group --shell /bin/bash $USER || {
-        umount "$HOME"
+        #umount "$HOME"
         rm -rf "$HOME"
         exit 1
     }
   fi
 
   # create temporary home directory
-  mount -t tmpfs -o mode=700 none "$HOME" || { rm -rf "$HOME"; exit 1; }
+  #mount -t tmpfs -o mode=700 none "$HOME" || { rm -rf "$HOME"; exit 1; }
   chown $USER:$USER "$HOME"
   gs_skel=/etc/guest-session/skel/
   if [ -d "$gs_skel" ] && [ -n "`find $gs_skel -type f`" ]; then
@@ -144,7 +144,7 @@ remove_account ()
     sleep 0.2; 
   done
 
-  umount "$GUEST_HOME" || umount -l "$GUEST_HOME" || true
+  #umount "$GUEST_HOME" || umount -l "$GUEST_HOME" || true
   rm -rf "$GUEST_HOME"
 
   # remove leftovers in /tmp
