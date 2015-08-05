@@ -1,6 +1,6 @@
 #!/bin/bash
 
-total_passos=12
+total_passos=11
 passo_atual=0
 
 tn502_endereco="$(lspci | grep SM501 | cut -d' ' -f1 | sed 's/\./:/')"
@@ -19,10 +19,6 @@ progresso "Instalando os arquivos de regras do udev"
 
 install -m 644 etc/udev/rules.d/71-usb-3seats-2hubs.rules /etc/udev/rules.d
 install -m 644 etc/udev/rules.d/72-usb-3seats-late.rules /etc/udev/rules.d
-
-progresso "Ativando as novas regras do udev e trazendo os novos terminais à vida"
-
-udevadm trigger
 
 progresso "Instalando os arquivos de serviço do systemd"
 
@@ -71,6 +67,7 @@ systemctl enable x-daemon-3seats@${tn502_display}.service
 systemctl enable zramswap.service
 systemctl start zramswap.service
 
-progresso "Ativando a interface gráfica"
+progresso "Ativando as novas regras do udev e trazendo os novos terminais à vida"
 
+udevadm trigger
 systemctl restart lightdm.service
