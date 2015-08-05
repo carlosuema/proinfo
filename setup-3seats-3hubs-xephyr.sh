@@ -46,15 +46,13 @@ apt -y upgrade
 
 progresso "Instalando os pacotes necessários"
 
-do_apt xserver-xorg-video-nested
+do_apt xserver-xephyr
 
 progresso "Instalando os arquivos de configuração do Xorg para a placa de vídeo TN-502"
 
 install -d /etc/X11/xorg.conf.d
 install -m 644 etc/X11/xorg.conf.d/tn502-3seats.conf.in /etc/X11/xorg.conf.d/tn502-3seats.conf
-install -m 644 etc/X11/xorg.conf.d/nested-3seats.conf.in /etc/X11/xorg.conf.d/nested-3seats.conf
-sed -i -e "s/@TN502_DISPLAY@/${tn502_display}/" -e "s/@TN502_ADDRESS@/${tn502_endereco}/" /etc/X11/xorg.conf.d/tn502-3seats.conf
-sed -i -e "s/@TN502_DISPLAY@/${tn502_display}/" /etc/X11/xorg.conf.d/nested-3seats.conf
+sed -i -e "s/@TN502_ADDRESS@/${tn502_endereco}/" -e "s/@TN502_DISPLAY@/${tn502_display}/" /etc/X11/xorg.conf.d/tn502-3seats.conf
 
 progresso "Instalando os scripts do LightDM para manipulação de contas de convidado"
 
@@ -64,6 +62,8 @@ progresso "Instalando os arquivos de configuração do LightDM para multitermina
 
 install -d /etc/lightdm/lightdm.conf.d
 install -m 644 etc/lightdm/lightdm.conf.d/logind.conf /etc/lightdm/lightdm.conf.d
+install -m 644 etc/lightdm/lightdm.conf.d/xephyr-3seats.conf.in /etc/lightdm/lightdm.conf.d/xephyr-3seats.conf
+sed -i -e "s/@TN502_DISPLAY@/${tn502_display}/" /etc/lightdm/lightdm.conf.d/xephyr-3seats.conf
 
 progresso "Ativando os serviços do systemd necessários para os computadores do Proinfo"
 

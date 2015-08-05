@@ -1,6 +1,6 @@
 #!/bin/bash
 
-total_passos=11
+total_passos=9
 passo_atual=0
 
 tn502_endereco="$(lspci | grep SM501 | cut -d' ' -f1 | sed 's/\./:/')"
@@ -14,15 +14,12 @@ progresso "Instalando os arquivos de regras do udev"
 
 install -m 644 etc/udev/rules.d/71-usb-2seats-1hub.rules /etc/udev/rules.d
 
-progresso "Ativando as novas regras do udev e trazendo os novos terminais à vida"
-
-udevadm trigger
-
 progresso "Instalando os arquivos de serviço do systemd"
 
 install -d /etc/systemd/scripts
-install -m 755 etc/systemd/scripts/* /etc/systemd/scripts
-install -m 644 etc/systemd/system/*.service /etc/systemd/system
+install -m 755 etc/systemd/scripts/zramctrl /etc/systemd/scripts
+install -m 644 etc/systemd/system/le-nextboot-*.service /etc/systemd/system
+install -m 644 etc/systemd/system/zramswap.service /etc/systemd/system
 
 progresso "Atualizando o arquivo /etc/apt/sources.list"
 
@@ -32,10 +29,6 @@ progresso "Preparando o sistema para a instalação dos novos pacotes"
 
 apt update
 apt -y upgrade
-
-progresso "Instalando o arquivo de auto-execução do compton"
-
-install -m 644 etc/xdg/autostart/compton.desktop /etc/xdg/autostart
 
 progresso "Instalando os arquivos de configuração do Xorg para a placa de vídeo TN-502"
 
@@ -57,6 +50,7 @@ progresso "Ativando os serviços do systemd necessários para os computadores do
 systemctl enable zramswap.service
 systemctl start zramswap.service
 
-progresso "Ativando a interface gráfica"
+progresso "Ativando as novas regras do udev e trazendo os novos terminais à vida"
 
+udevadm trigger
 systemctl restart lightdm.service
