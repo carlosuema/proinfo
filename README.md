@@ -9,7 +9,7 @@ git clone http://gitlab.se-pmmc.com.br/pte/proinfo-debian-config
 
 # Instruções de instalação e configuração
 
-Todas as informações necessárias estão disponíveis em nosso [wiki](http://gitlab.se-pmmc.com.br/pte/proinfo-debian-config/wiki).
+Todas as informações necessárias estão disponíveis em nosso [wiki](http://gitlab.se-pmmc.com.br/pte/proinfo-debian-config/wikis/home).
 
 # Números obtidos com o Debian 8 configurado para 3 terminais
 
