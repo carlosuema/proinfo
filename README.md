@@ -4,12 +4,12 @@ Coleção de arquivos de configuração dos multiterminais para Debian GNU/Linux
 
 Para obter uma cópia deste repositório, execute o seguinte comando:
 ```
-git clone git://github.com/oiteam/proinfo-debian-config
+git clone http://gitlab.se-pmmc.com.br/pte/proinfo-debian-config
 ```
 
 # Instruções de instalação e configuração
 
-Todas as informações necessárias estão disponíveis em nosso [wiki](https://github.com/oiteam/proinfo-debian-config/wiki).
+Todas as informações necessárias estão disponíveis em nosso [wiki](http://gitlab.se-pmmc.com.br/pte/proinfo-debian-config/wiki).
 
 # Números obtidos com o Debian 8 configurado para 3 terminais
 
