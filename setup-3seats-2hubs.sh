@@ -63,7 +63,7 @@ install -m 644 etc/lightdm/lightdm.conf.d/logind.conf /etc/lightdm/lightdm.conf.
 
 progresso "Ativando os serviços do systemd necessários para os computadores do Proinfo"
 
-systemctl enable x-daemon-3seats@${tn502_display}.service
+systemctl enable x-daemon-Nseats@${tn502_display}.service
 systemctl enable zramswap.service
 systemctl start zramswap.service
 
