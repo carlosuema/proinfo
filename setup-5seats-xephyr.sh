@@ -27,7 +27,7 @@ install -m 644 etc/udev/rules.d/72-usb-5seats-late.rules /etc/udev/rules.d
 progresso "Instalando os arquivos de serviço do systemd"
 
 install -d /etc/systemd/scripts
-install -d /etc/systemd/system/x-daemon-Nseats@.service.d
+install -d /etc/systemd/system/x-daemon-Nseats@${tn502_display}.service.d
 install -m 755 etc/systemd/scripts/* /etc/systemd/scripts
 install -m 644 etc/systemd/system/*.service /etc/systemd/system
 install -m 644 etc/systemd/system/x-daemon-Nseats@.service.d/xephyr-5seats.conf /etc/systemd/system/x-daemon-Nseats@${tn502_display}.service.d

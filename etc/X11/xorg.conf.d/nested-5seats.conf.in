@@ -16,15 +16,15 @@ EndSection
 
 Section "Screen"
     MatchSeat "seat-usb1"
-    Identifier "nested_screen_LVDS_0"
+    Identifier "nested_screen_VGA_0"
     Device "nested_device_0"
     DefaultDepth 16
-    Option "Output" "LVDS"
+    Option "Output" "VGA"
 EndSection
 
 Section "Screen"
     MatchSeat "seat-usb3"
-    Identifier "nested_screen_VGA_0"
+    Identifier "nested_screen_LVDS_0"
     Device "nested_device_0"
     DefaultDepth 16
     Option "Output" "LVDS"
