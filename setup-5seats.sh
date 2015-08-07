@@ -3,8 +3,12 @@
 total_passos=11
 passo_atual=0
 
+get_display () {
+    echo ${1} | awk -F: '{ print $1 * 100 + $2 * 10 + $3 }'
+}
+
 tn502_endereco=($(lspci | grep SM501 | cut -d' ' -f1 | sed 's/\./:/'))
-tn502_display=":$(( $(echo ${tn502_endereco[0]} | awk -F: '{ print $1 * 100 + $2 * 10 + $3 }') + $(echo ${tn502_endereco[1]} | awk -F: '{ print $1 * 100 + $2 * 10 + $3 }') ))"
+tn502_display=":$(( $(get_display ${tn502_endereco[0]}) + $(get_display ${tn502_endereco[1]}) ))"
 
 progresso() {
   passo_atual=$(( passo_atual + 1 ))
