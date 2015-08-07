@@ -4,7 +4,7 @@ Coleção de arquivos de configuração dos multiterminais para Debian GNU/Linux
 
 Para obter uma cópia deste repositório, execute o seguinte comando:
 ```
-git clone http://gitlab.se-pmmc.com.br/pte/proinfo-debian-config
+git clone http://gitlab.se-pmmc.com.br/pte/proinfo-debian-config.git
 ```
 
 # Instruções de instalação e configuração
