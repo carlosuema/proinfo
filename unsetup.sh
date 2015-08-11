@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 get_display () {
     echo ${1} | awk -F: '{ print $1 * 100 + $2 * 10 + $3 }'
 }
 
 tn502_endereco=($(lspci | grep SM501 | cut -d' ' -f1 | sed 's/\./:/'))
-tn502_display=":$(( $(get_display ${tn502_endereco[0]) + $(get_display ${tn502_endereco[1]) ))"
+tn502_display=":$(( $(get_display ${tn502_endereco[0]}) + $(get_display ${tn502_endereco[1]}) ))"
 
 systemctl disable x-daemon-Nseats@${tn502_display}.service
 
