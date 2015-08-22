@@ -1,0 +1,1 @@
+Acquire::http::Proxy "http://@APT_CACHER_NG_SERVER@:3142";
