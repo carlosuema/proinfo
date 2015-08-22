@@ -11,9 +11,4 @@ do_apt() {
   apt install -y --no-install-recommends ${@}
 }
 
-#do_apt ${pacotes_base} ${pacotes_xorg} ${pacotes_lightdm} ${pacotes_xfce} ${pacotes_gvfs} ${pacotes_audio}
-
-for i in ${pacotes_base} ${pacotes_xorg} ${pacotes_lightdm} ${pacotes_xfce} ${pacotes_gvfs} ${pacotes_audio}
-do
-echo $i
-done
+do_apt ${pacotes_base} ${pacotes_xorg} ${pacotes_lightdm} ${pacotes_xfce} ${pacotes_gvfs} ${pacotes_audio}
