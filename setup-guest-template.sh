@@ -6,4 +6,5 @@ touch /etc/guest-session/auto.sh
 mkdir -m 0777 /var/guest-data
 install -d /etc/lightdm/lightdm.conf.d
 install -m 644 etc/lightdm/lightdm.conf.d/autologin-guest.conf /etc/lightdm/lightdm.conf.d
+install -m 644 etc/lightdm/lightdm.conf.d/greeter-hide-users.conf /etc/lightdm/lightdm.conf.d
 install usr/local/sbin/* /usr/local/sbin
