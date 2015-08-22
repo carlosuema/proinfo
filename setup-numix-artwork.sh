@@ -30,5 +30,5 @@ do
     ln -sf ${theme} /usr/share/themes
 done
 
-install -D /etc/lightdm/lightdm-gtk-greeter.conf.d
+install -d /etc/lightdm/lightdm-gtk-greeter.conf.d
 install -m 644 etc/lightdm/lightdm-gtk-greeter.conf.d/numix.conf /etc/lightdm/lightdm-gtk-greeter.conf.d
