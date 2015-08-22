@@ -17,3 +17,9 @@ apt update
 apt -y upgrade
 
 do_apt ${pacotes_base} ${pacotes_xorg} ${pacotes_lightdm} ${pacotes_lxde} ${pacotes_gvfs} ${pacotes_audio}
+
+install -d /etc/lightdm/lightdm.conf.d
+install -m 644 etc/lightdm/lightdm.conf.d/vt1.conf /etc/lightdm/lightdm.conf.d
+
+install -d /etc/systemd/system/lightdm.service.d
+install -m 644 etc/systemd/system/lightdm.service.d/vt1.conf /etc/systemd/system/lightdm.service.d
