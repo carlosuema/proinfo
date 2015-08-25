@@ -32,7 +32,7 @@ install -m 644 etc/apt/sources.list /etc/apt
 
 progresso "Adicionando o repositório próprio com os pacotes modificados para os computadores do ProInfo"
 
-install -m 644 etc/apt/sources.list.d/obs-home-lbssousa-multiseat-debian.list /etc/apt/sources.list.d
+install -m 644 etc/apt/sources.list.d/obs-home-lbssousa-debian-multiseat.list /etc/apt/sources.list.d
 apt-key add etc/apt/sources.list.d/obs-home-lbssousa-multiseat-debian.key
 
 progresso "Preparando o sistema para a instalação dos novos pacotes"
