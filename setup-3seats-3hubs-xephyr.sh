@@ -66,8 +66,6 @@ sed -i -e "s/@TN502_DISPLAY@/${tn502_display}/g" /etc/lightdm/lightdm.conf.d/xep
 progresso "Ativando os serviços do systemd necessários para os computadores do Proinfo"
 
 systemctl enable x-daemon-Nseats@${tn502_display}.service
-systemctl enable zramswap.service
-systemctl start zramswap.service
 
 progresso "Ativando as novas regras do udev e trazendo os novos terminais à vida"
 

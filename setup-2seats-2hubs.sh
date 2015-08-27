@@ -18,9 +18,7 @@ install -m 644 etc/udev/rules.d/72-usb-2seats-2hubs-late.rules /etc/udev/rules.d
 progresso "Instalando os arquivos de serviço do systemd"
 
 install -d /etc/systemd/scripts
-install -m 755 etc/systemd/scripts/zramctrl /etc/systemd/scripts
 install -m 644 etc/systemd/system/le-nextboot-*.service /etc/systemd/system
-install -m 644 etc/systemd/system/zramswap.service /etc/systemd/system
 
 progresso "Atualizando o arquivo /etc/apt/sources.list"
 
@@ -48,8 +46,6 @@ install -m 644 etc/lightdm/lightdm.conf.d/logind.conf /etc/lightdm/lightdm.conf.
 
 progresso "Ativando os serviços do systemd necessários para os computadores do Proinfo"
 
-systemctl enable zramswap.service
-systemctl start zramswap.service
 
 progresso "Ativando as novas regras do udev e trazendo os novos terminais à vida"
 
