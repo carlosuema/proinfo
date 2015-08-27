@@ -3,7 +3,7 @@
 pacotes_base="desktop-base"
 pacotes_xorg="xorg dbus-x11"
 pacotes_lightdm="lightdm"
-pacotes_lxde="lxde lxtask gtk2-engines notification-daemon evince-gtk"
+pacotes_lxde="lxde lxtask gtk2-engines notification-daemon evince-gtk wicd"
 pacotes_gvfs="gvfs-backends gvfs-fuse ntfs-3g dosfstools"
 pacotes_audio="pulseaudio pulseaudio-module-x11 rtkit"
 
