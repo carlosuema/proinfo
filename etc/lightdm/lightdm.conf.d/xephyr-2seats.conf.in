@@ -1,2 +1,0 @@
-[Seat:seat-tn502]
-xserver-command=Xephyr -sw-cursor -dpi 96 -xkbrules evdev -xkblayout br -xkbmodel abnt2 -host-display @TN502_DISPLAY@ -fullscreen

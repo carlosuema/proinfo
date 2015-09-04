@@ -1,5 +1,5 @@
 Section "Device"
-    MatchSeat "__x-daemon@TN502_DISPLAY@__"
+    MatchSeat "__fake-seat__"
     Identifier "videocard_tn502"
     BusID "PCI:@TN502_ADDRESS@"
     Driver "siliconmotion"
@@ -7,7 +7,7 @@ Section "Device"
 EndSection
 
 Section "Screen"
-    MatchSeat "__x-daemon@TN502_DISPLAY@__"
+    MatchSeat "__fake-seat__"
     Identifier "screen_tn502"
     Device "videocard_tn502"
     DefaultDepth 16

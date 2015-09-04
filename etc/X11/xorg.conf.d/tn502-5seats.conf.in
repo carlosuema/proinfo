@@ -1,5 +1,5 @@
 Section "Device"
-    MatchSeat "__x-daemon@TN502_DISPLAY@__"
+    MatchSeat "__fake-seat__"
     Identifier "videocard_tn502_dualhead_0"
     BusID "PCI:@TN502_ADDRESS_0@"
     Driver "siliconmotion"
@@ -8,7 +8,7 @@ Section "Device"
 EndSection
 
 Section "Device"
-    MatchSeat "__x-daemon@TN502_DISPLAY@__"
+    MatchSeat "__fake-seat__"
     Identifier "videocard_tn502_dualhead_1"
     BusID "PCI:@TN502_ADDRESS_1@"
     Driver "siliconmotion"
@@ -17,7 +17,7 @@ Section "Device"
 EndSection
 
 Section "Screen"
-    MatchSeat "__x-daemon@TN502_DISPLAY@__"
+    MatchSeat "__fake-seat__"
     Identifier "screen_tn502_dualhead_0"
     Device "videocard_tn502_dualhead_0"
     DefaultDepth 16
@@ -28,7 +28,7 @@ Section "Screen"
 EndSection
 
 Section "Screen"
-    MatchSeat "__x-daemon@TN502_DISPLAY@__"
+    MatchSeat "__fake-seat__"
     Identifier "screen_tn502_dualhead_1"
     Device "videocard_tn502_dualhead_1"
     DefaultDepth 16
@@ -39,7 +39,7 @@ Section "Screen"
 EndSection
 
 Section "ServerLayout"
-    MatchSeat "__x-daemon@TN502_DISPLAY@__"
+    MatchSeat "__fake-seat__"
     Identifier "tn502_5seats_layout"
     Screen 0 "screen_tn502_dualhead_0"
     Screen 1 "screen_tn502_dualhead_1"

@@ -4,7 +4,6 @@ total_passos=11
 passo_atual=0
 
 tn502_endereco="$(lspci | grep SM501 | cut -d' ' -f1 | sed 's/\./:/')"
-tn502_display=":$(echo ${tn502_endereco} | awk -F: '{ print $1 * 100 + $2 * 10 + $3 }')"
 
 progresso() {
   passo_atual=$(( passo_atual + 1 ))
@@ -23,10 +22,10 @@ install -m 644 etc/udev/rules.d/72-usb-3seats-late.rules /etc/udev/rules.d
 progresso "Instalando os arquivos de serviço do systemd"
 
 install -d /etc/systemd/scripts
-install -d /etc/systemd/system/x-daemon-Nseats@${tn502_display}.service.d
+install -d /etc/systemd/system/x-daemon-Nseats.service.d
 install -m 755 etc/systemd/scripts/* /etc/systemd/scripts
 install -m 644 etc/systemd/system/*.service /etc/systemd/system
-install -m 644 etc/systemd/system/x-daemon-Nseats@.service.d/xephyr-3seats.conf /etc/systemd/system/x-daemon-Nseats@${tn502_display}.service.d
+install -m 644 etc/systemd/system/x-daemon-Nseats.service.d/xephyr-3seats.conf /etc/systemd/system/x-daemon-Nseats.service.d
 
 progresso "Atualizando o arquivo /etc/apt/sources.list"
 
@@ -50,7 +49,7 @@ progresso "Instalando os arquivos de configuração do Xorg para a placa de víd
 
 install -d /etc/X11/xorg.conf.d
 install -m 644 etc/X11/xorg.conf.d/tn502-3seats.conf.in /etc/X11/xorg.conf.d/tn502-3seats.conf
-sed -i -e "s/@TN502_ADDRESS@/${tn502_endereco}/g" -e "s/@TN502_DISPLAY@/${tn502_display}/g" /etc/X11/xorg.conf.d/tn502-3seats.conf
+sed -i -e "s/@TN502_ADDRESS@/${tn502_endereco}/g" /etc/X11/xorg.conf.d/tn502-3seats.conf
 
 progresso "Instalando os scripts do LightDM para manipulação de contas de convidado"
 
@@ -60,12 +59,11 @@ progresso "Instalando os arquivos de configuração do LightDM para multitermina
 
 install -d /etc/lightdm/lightdm.conf.d
 install -m 644 etc/lightdm/lightdm.conf.d/logind.conf /etc/lightdm/lightdm.conf.d
-install -m 644 etc/lightdm/lightdm.conf.d/xephyr-3seats.conf.in /etc/lightdm/lightdm.conf.d/xephyr-3seats.conf
-sed -i -e "s/@TN502_DISPLAY@/${tn502_display}/g" /etc/lightdm/lightdm.conf.d/xephyr-3seats.conf
+install -m 644 etc/lightdm/lightdm.conf.d/xephyr-3seats.conf /etc/lightdm/lightdm.conf.d/xephyr-3seats.conf
 
 progresso "Ativando os serviços do systemd necessários para os computadores do Proinfo"
 
-systemctl enable x-daemon-Nseats@${tn502_display}.service
+systemctl enable x-daemon-Nseats.service
 
 progresso "Ativando as novas regras do udev e trazendo os novos terminais à vida"
 

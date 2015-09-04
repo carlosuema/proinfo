@@ -1,0 +1,11 @@
+[Unit]
+Description=X on display :0
+Before=lightdm.service
+StopWhenUnneeded=true
+
+[Service]
+Type=forking
+ExecStart=/etc/systemd/scripts/x-daemon :0 -seat __fake-seat__ -nolisten tcp -dpms -s 0 -nocursor
+
+[Install]
+WantedBy=display-manager.service

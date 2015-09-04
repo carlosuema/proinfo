@@ -3,12 +3,7 @@
 total_passos=11
 passo_atual=0
 
-get_display () {
-    echo ${1} | awk -F: '{ print $1 * 100 + $2 * 10 + $3 }'
-}
-
 tn502_endereco=($(lspci | grep SM501 | cut -d' ' -f1 | sed 's/\./:/'))
-tn502_display=":$(( $(get_display ${tn502_endereco[0]}) + $(get_display ${tn502_endereco[1]}) ))"
 
 progresso() {
   passo_atual=$(( passo_atual + 1 ))
@@ -52,9 +47,8 @@ progresso "Instalando os arquivos de configuração do Xorg para a placa de víd
 
 install -d /etc/X11/xorg.conf.d
 install -m 644 etc/X11/xorg.conf.d/tn502-5seats.conf.in /etc/X11/xorg.conf.d/tn502-5seats.conf
-install -m 644 etc/X11/xorg.conf.d/nested-5seats.conf.in /etc/X11/xorg.conf.d/nested-5seats.conf
-sed -i -e "s/@TN502_DISPLAY@/${tn502_display}/g" -e "s/@TN502_ADDRESS_0@/${tn502_endereco[0]}/g" -e "s/@TN502_ADDRESS_1@/${tn502_endereco[1]}/g" /etc/X11/xorg.conf.d/tn502-5seats.conf
-sed -i -e "s/@TN502_DISPLAY@/${tn502_display}/g" /etc/X11/xorg.conf.d/nested-5seats.conf
+install -m 644 etc/X11/xorg.conf.d/nested-5seats.conf /etc/X11/xorg.conf.d/nested-5seats.conf
+sed -i -e "s/@TN502_ADDRESS_0@/${tn502_endereco[0]}/g" -e "s/@TN502_ADDRESS_1@/${tn502_endereco[1]}/g" /etc/X11/xorg.conf.d/tn502-5seats.conf
 
 progresso "Instalando os scripts do LightDM para manipulação de contas de convidado"
 
@@ -67,7 +61,7 @@ install -m 644 etc/lightdm/lightdm.conf.d/logind.conf /etc/lightdm/lightdm.conf.
 
 progresso "Ativando os serviços do systemd necessários para os computadores do Proinfo"
 
-systemctl enable x-daemon-Nseats@${tn502_display}.service
+systemctl enable x-daemon-Nseats.service
 
 progresso "Ativando as novas regras do udev e trazendo os novos terminais à vida"
 

@@ -1,5 +1,0 @@
-[Seat:seat-usb2]
-xserver-command=Xephyr -sw-cursor -dpi 96 -xkbrules evdev -xkblayout br -xkbmodel abnt2 -host-display @TN502_DISPLAY@ -output LVDS
-
-[Seat:seat-usb4]
-xserver-command=Xephyr -sw-cursor -dpi 96 -xkbrules evdev -xkblayout br -xkbmodel abnt2 -host-display @TN502_DISPLAY@ -output VGA
