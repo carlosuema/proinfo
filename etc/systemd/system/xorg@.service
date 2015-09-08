@@ -1,0 +1,6 @@
+[Unit]
+Description=Service for Xorg server at display :%i
+
+[Service]
+ExecStart=/usr/bin/X :%i -seat __fake-seat__ -nolisten tcp -dpms -s 0 -nocursor
+SuccessExitStatus=0 1

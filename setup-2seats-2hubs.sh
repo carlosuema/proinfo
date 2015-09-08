@@ -17,7 +17,6 @@ install -m 644 etc/udev/rules.d/72-usb-2seats-2hubs-late.rules /etc/udev/rules.d
 
 progresso "Instalando os arquivos de serviço do systemd"
 
-install -d /etc/systemd/scripts
 install -m 644 etc/systemd/system/le-nextboot-*.service /etc/systemd/system
 
 progresso "Atualizando o arquivo /etc/apt/sources.list"

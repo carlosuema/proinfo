@@ -21,9 +21,7 @@ install -m 644 etc/udev/rules.d/72-usb-5seats-late.rules /etc/udev/rules.d
 
 progresso "Instalando os arquivos de serviço do systemd"
 
-install -d /etc/systemd/scripts
-install -m 755 etc/systemd/scripts/* /etc/systemd/scripts
-install -m 644 etc/systemd/system/*.service /etc/systemd/system
+install -m 644 etc/systemd/system/*.{socket,service} /etc/systemd/system
 
 progresso "Atualizando o arquivo /etc/apt/sources.list"
 
@@ -32,7 +30,7 @@ install -m 644 etc/apt/sources.list /etc/apt
 progresso "Adicionando o repositório próprio com os pacotes modificados para os computadores do ProInfo"
 
 install -m 644 etc/apt/sources.list.d/obs-home-lbssousa-multiseat-debian.list /etc/apt/sources.list.d
-apt-key add etc/apt/sources.list.d/obs-home-lbssousa-multiseat-debian.key
+apt-key add etc/apt/sources.list.d/obs-home-lbssousa.key
 
 progresso "Preparando o sistema para a instalação dos novos pacotes"
 
@@ -61,7 +59,12 @@ install -m 644 etc/lightdm/lightdm.conf.d/logind.conf /etc/lightdm/lightdm.conf.
 
 progresso "Ativando os serviços do systemd necessários para os computadores do Proinfo"
 
+<<<<<<< HEAD
+systemctl enable xorg@0.socket
+systemctl start xorg@0.socket
+=======
 systemctl enable x-daemon-Nseats.service
+>>>>>>> 59f7bb949db28b8d1ef87bedeb976b3614466232
 
 progresso "Ativando as novas regras do udev e trazendo os novos terminais à vida"
 
