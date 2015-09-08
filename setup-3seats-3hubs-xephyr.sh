@@ -21,17 +21,9 @@ install -m 644 etc/udev/rules.d/72-usb-3seats-late.rules /etc/udev/rules.d
 
 progresso "Instalando os arquivos de serviço do systemd"
 
-<<<<<<< HEAD
 install -d /etc/systemd/system/xorg@.service.d
 install -m 644 etc/systemd/system/*.{socket,service} /etc/systemd/system
 install -m 644 etc/systemd/system/xorg@.service.d/xephyr-3seats.conf /etc/systemd/system/xorg@.service.d
-=======
-install -d /etc/systemd/scripts
-install -d /etc/systemd/system/x-daemon-Nseats.service.d
-install -m 755 etc/systemd/scripts/* /etc/systemd/scripts
-install -m 644 etc/systemd/system/*.service /etc/systemd/system
-install -m 644 etc/systemd/system/x-daemon-Nseats.service.d/xephyr-3seats.conf /etc/systemd/system/x-daemon-Nseats.service.d
->>>>>>> 59f7bb949db28b8d1ef87bedeb976b3614466232
 
 progresso "Atualizando o arquivo /etc/apt/sources.list"
 
@@ -69,12 +61,8 @@ install -m 644 etc/lightdm/lightdm.conf.d/xephyr-3seats.conf /etc/lightdm/lightd
 
 progresso "Ativando os serviços do systemd necessários para os computadores do Proinfo"
 
-<<<<<<< HEAD
 systemctl enable xorg@0.socket
 systemctl start xorg@0.socket
-=======
-systemctl enable x-daemon-Nseats.service
->>>>>>> 59f7bb949db28b8d1ef87bedeb976b3614466232
 
 progresso "Ativando as novas regras do udev e trazendo os novos terminais à vida"
 

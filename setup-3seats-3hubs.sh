@@ -59,12 +59,8 @@ install -m 644 etc/lightdm/lightdm.conf.d/logind.conf /etc/lightdm/lightdm.conf.
 
 progresso "Ativando os serviços do systemd necessários para os computadores do Proinfo"
 
-<<<<<<< HEAD
 systemctl enable xorg@0.socket
 systemctl start xorg@0.socket
-=======
-systemctl enable x-daemon-Nseats.service
->>>>>>> 59f7bb949db28b8d1ef87bedeb976b3614466232
 
 progresso "Ativando as novas regras do udev e trazendo os novos terminais à vida"
 

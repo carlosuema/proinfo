@@ -1,6 +1,6 @@
 #!/bin/bash
 
-total_passos=9
+total_passos=8
 passo_atual=0
 
 tn502_endereco="$(lspci | grep SM501 | cut -d' ' -f1 | sed 's/\./:/')"
@@ -42,9 +42,6 @@ progresso "Instalando os arquivos de configuração do LightDM para multitermina
 
 install -d /etc/lightdm/lightdm.conf.d
 install -m 644 etc/lightdm/lightdm.conf.d/logind.conf /etc/lightdm/lightdm.conf.d
-
-progresso "Ativando os serviços do systemd necessários para os computadores do Proinfo"
-
 
 progresso "Ativando as novas regras do udev e trazendo os novos terminais à vida"
 
