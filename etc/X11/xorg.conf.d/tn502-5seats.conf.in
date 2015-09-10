@@ -1,46 +1,52 @@
+Section "Monitor"
+    Identifier "LVDS Monitor"
+EndSection
+
+Section "Monitor"
+    Identifier "VGA Monitor"
+    Option "Enable" "true"
+    Option "RightOf" "LVDS Monitor"
+EndSection
+
 Section "Device"
     MatchSeat "__fake-seat__"
-    Identifier "videocard_tn502_dualhead_0"
+    Identifier "ThinNetworks TN-502 PCI Video Card 0"
     BusID "PCI:@TN502_ADDRESS_0@"
     Driver "siliconmotion"
     Option "PanelSize" "1360x768"
     Option "Dualhead" "true"
+    Option "monitor-LVDS" "LVDS Monitor"
+    Option "monitor-VGA" "VGA Monitor"
 EndSection
 
 Section "Device"
     MatchSeat "__fake-seat__"
-    Identifier "videocard_tn502_dualhead_1"
+    Identifier "ThinNetworks TN-502 PCI Video Card 1"
     BusID "PCI:@TN502_ADDRESS_1@"
     Driver "siliconmotion"
     Option "PanelSize" "1360x768"
     Option "Dualhead" "true"
+    Option "monitor-LVDS" "LVDS Monitor"
+    Option "monitor-VGA" "VGA Monitor"
 EndSection
 
 Section "Screen"
     MatchSeat "__fake-seat__"
-    Identifier "screen_tn502_dualhead_0"
-    Device "videocard_tn502_dualhead_0"
+    Identifier "ThinNetworks TN-502 Screen 0"
+    Device "ThinNetworks TN-502 PCI Video Card 0"
     DefaultDepth 16
-
-    SubSection "Display"
-        Virtual 2720 768
-    EndSubSection
 EndSection
 
 Section "Screen"
     MatchSeat "__fake-seat__"
-    Identifier "screen_tn502_dualhead_1"
-    Device "videocard_tn502_dualhead_1"
+    Identifier "ThinNetworks TN-502 Screen 1"
+    Device "ThinNetworks TN-502 PCI Video Card 1"
     DefaultDepth 16
-
-    SubSection "Display"
-        Virtual 2720 768
-    EndSubSection
 EndSection
 
 Section "ServerLayout"
     MatchSeat "__fake-seat__"
-    Identifier "tn502_5seats_layout"
-    Screen 0 "screen_tn502_dualhead_0"
-    Screen 1 "screen_tn502_dualhead_1"
+    Identifier "ThinNetworks TN-502 Dual-Card Layout"
+    Screen 0 "ThinNetworks TN-502 Screen 0"
+    Screen 1 "ThinNetworks TN-502 Screen 1"
 EndSection

@@ -1,19 +1,27 @@
+Section "Monitor"
+    Identifier "LVDS Monitor"
+EndSection
+
+Section "Monitor"
+    Identifier "VGA Monitor"
+    Option "Enable" "true"
+    Option "RightOf" "LVDS Monitor"
+EndSection
+
 Section "Device"
     MatchSeat "__fake-seat__"
-    Identifier "videocard_sm501_dualhead"
+    Identifier "ThinNetworks TN-502 PCI Video Card"
     BusID "PCI:@TN502_ADDRESS@"
     Driver "siliconmotion"
     Option "PanelSize" "1360x768"
     Option "Dualhead" "true"
+    Option "Monitor-LVDS" "LVDS Monitor"
+    Option "Monitor-VGA" "VGA Monitor"
 EndSection
 
 Section "Screen"
     MatchSeat "__fake-seat__"
-    Identifier "screen_sm501_dualhead"
-    Device "videocard_sm501_dualhead"
+    Identifier "ThinNetworks TN-502 Screen"
+    Device "ThinNetworks TN-502 PCI Video Card"
     DefaultDepth 16
-
-    SubSection "Display"
-        Virtual 2720 768
-    EndSubSection
 EndSection

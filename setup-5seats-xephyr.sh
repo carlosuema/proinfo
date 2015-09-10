@@ -21,9 +21,7 @@ install -m 644 etc/udev/rules.d/72-usb-5seats-late.rules /etc/udev/rules.d
 
 progresso "Instalando os arquivos de serviço do systemd"
 
-install -d /etc/systemd/system/xorg@.service.d
 install -m 644 etc/systemd/system/*.{socket,service} /etc/systemd/system
-install -m 644 etc/systemd/system/xorg@.service.d/xephyr-5seats.conf /etc/systemd/system/xorg@.service.d
 
 progresso "Atualizando o arquivo /etc/apt/sources.list"
 

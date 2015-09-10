@@ -1,6 +1,6 @@
 Section "Device"
     MatchSeat "seat-tn502"
-    Identifier "videocard_sm501"
+    Identifier "ThinNetworks TN-502 PCI Video Card"
     BusID "PCI:@TN502_ADDRESS@"
     Driver "siliconmotion"
     Option "PanelSize" "1360x768"
@@ -8,7 +8,7 @@ EndSection
 
 Section "Screen"
     MatchSeat "seat-tn502"
-    Identifier "screen_sm501"
-    Device "videocard_sm501"
+    Identifier "ThinNetworks TN-502 Screen"
+    Device "ThinNetworks TN-502 PCI Video Card"
     DefaultDepth 16
 EndSection
