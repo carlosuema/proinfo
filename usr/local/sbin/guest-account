@@ -21,6 +21,8 @@ fi
 add_account ()
 {
   HOME=`mktemp -td guest-XXXXXX`
+  mv $HOME `echo $HOME | tr 'A-Z' 'a-z'`
+  HOME=`echo $HOME | tr 'A-Z' 'a-z'`
   USER=`echo $HOME | sed 's/\(.*\)guest/guest/'`
   PRE_HOME="/tmp/.rw-${USER}"
 
@@ -57,8 +59,9 @@ add_account ()
   fi
 
   # create temporary home directory
+  mkdir "$PRE_HOME"
   mount -t tmpfs -o mode=700 none "$PRE_HOME" || { rm -rf "$PRE_HOME"; exit 1; }
-  chown $USER:$USER "$PRE_HOME"
+  chown $USER:guest "$PRE_HOME"
   gs_skel=/etc/guest-session/skel/
   if [ -d "$gs_skel" ] && [ -n "`find $gs_skel -type f`" ]; then
     #cp -rT $gs_skel "$HOME"
@@ -77,7 +80,7 @@ add_account ()
         exit 1
     }
   fi
-  #chown -R $USER:$USER "$HOME"
+  #chown -R $USER:guest "$HOME"
   usermod -d "$HOME" "$USER"
 
   #
@@ -127,7 +130,7 @@ add_account ()
       . /etc/guest-session/prefs.sh
   fi
 
-  chown -R $USER:$USER "$HOME"
+  chown -R $USER:guest "$HOME"
 
   echo $USER  
 }
