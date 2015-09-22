@@ -24,6 +24,7 @@ add_account ()
   mv $HOME `echo $HOME | tr 'A-Z' 'a-z'`
   HOME=`echo $HOME | tr 'A-Z' 'a-z'`
   USER=`echo $HOME | sed 's/\(.*\)guest/guest/'`
+  GROUP="guests"
   PRE_HOME="/tmp/.rw-${USER}"
 
   # if $USER already exists, it must be a locked system account with no existing
@@ -49,7 +50,7 @@ add_account ()
     fi
   else
     # does not exist, so create it
-    adduser --system --no-create-home --home / --gecos $(gettext "Guest") --ingroup guest --shell /bin/bash $USER || {
+    adduser --system --no-create-home --home / --gecos $(gettext "Guest") --ingroup $GROUP --shell /bin/bash $USER || {
         umount "$HOME"
         rm -rf "$HOME"
         umount "$PRE_HOME"
@@ -61,7 +62,7 @@ add_account ()
   # create temporary home directory
   mkdir "$PRE_HOME"
   mount -t tmpfs -o mode=700 none "$PRE_HOME" || { rm -rf "$PRE_HOME"; exit 1; }
-  chown $USER:guest "$PRE_HOME"
+  chown $USER:$GROUP "$PRE_HOME"
   gs_skel=/etc/guest-session/skel/
   if [ -d "$gs_skel" ] && [ -n "`find $gs_skel -type f`" ]; then
     #cp -rT $gs_skel "$HOME"
@@ -80,7 +81,7 @@ add_account ()
         exit 1
     }
   fi
-  #chown -R $USER:guest "$HOME"
+  #chown -R $USER:$GROUP "$HOME"
   usermod -d "$HOME" "$USER"
 
   #
@@ -130,7 +131,7 @@ add_account ()
       . /etc/guest-session/prefs.sh
   fi
 
-  chown -R $USER:guest "$HOME"
+  chown -R $USER:$GROUP "$HOME"
 
   echo $USER  
 }

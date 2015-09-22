@@ -1,7 +1,7 @@
 #!/bin/sh
 mkdir -p /etc/guest-session/skel
-addgroup guest
-adduser --gecos "Modelo para Sessão de Convidado" --shell /bin/bash --ingroup guest guest-template
+addgroup guests
+adduser --gecos "Modelo para Sessão de Convidado" --shell /bin/bash --ingroup guests guest-template
 echo 'touch ${HOME}/.skip-guest-warning-dialog' >> /etc/guest-session/prefs.sh
 touch /etc/guest-session/auto.sh
 mkdir -m 0777 /var/guest-data
